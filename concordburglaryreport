@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset=utf-8 />
+	<title>ClayCord</title>
+	<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css" />
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
+	<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background: "whitesmoke";
+			font-family: "Noto Sans", sans-serif;
+			color: #3d3d3d;
+		}
+
+		h1 {
+			position: absolute;
+			margin-top: 0;
+			top: 10px;
+			left: 45px;
+			font-size: 2em;
+			font-family: "Lora", serif;
+			letter-spacing: .04em;
+			padding: 10px 15px;
+			background: rgba(256, 256, 256);
+			border: 1px solid grey;
+			border-radius: 3px;
+			z-index: 800;
+		}
+
+		h2 {
+			font-family: "Lora", serif;
+			letter-spacing: .04em;
+		}
+
+		#map {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			width: 100%;
+		}
+
+		section {
+			position: absolute;
+			bottom: 0;
+			left: 10px;
+			width: 280px;
+			margin: 20px auto;
+			padding: 0 15px;
+			background: rgba(256, 256, 256);
+			border: 1px solid grey;
+			border-radius: 3px;
+			z-index: 800;
+		}
+
+		p {
+			font-size: .9em;
+			line-height: 1.5em;
+		}
+
+		a {
+			color: #005daa;
+			text-decoration: none;
+		}
+
+		a:hover {
+			text-decoration: underline;
+		}
+	</style>
+</head>
+
+<body>
+
+	<h1>Map of Buglaries in Concord, CA from 4-21 to 4-27 (2021).
+			<img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Flag_of_California.svg" alt="Flag of California.svg" width="45" height="30">
+	 </h1>
+
+	<div id='map'></div>
+
+	<section>
+		<h2>about this map</h2>
+
+		<p>This is a map showing 5 locations of buglaries throughout Concord, CA in the last week of April. </p>
+
+		<p>This information is brought to us by the Concord Police Department and Claycord.com
+		</p>
+
+		<p>Map authored by Nick Webster</p>
+
+	</section>
+
+	<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+	<script>
+
+		var options = {
+			center: [37.9780, -122.0311],
+			zoom: 14
+		}
+		var map = L.map('map', options);
+
+		var tiles = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+			attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
+			subdomains: 'abcd',
+			maxZoom: 19
+		}).addTo(map);
+
+		var message = '1671 Willow Pass Road';
+		L.marker([37.972538, -122.042767])
+		.bindTooltip(message)
+		.addTo(map)
+		.openTooltip();
+
+		var message = '1597 Market Street';
+		L.marker([37.966423, -122.048329])
+		.bindTooltip(message)
+		.addTo(map)
+		.openTooltip();
+
+		var message = '17 Eucalyptus Court';
+		L.marker([37.976919, -121.993042])
+		.bindTooltip(message)
+		.addTo(map)
+		.openTooltip();
+
+		var message = '1975 Diamond Blvd';
+		L.marker([37.970385, -122.055262])
+		.bindTooltip(message)
+		.addTo(map)
+		.openTooltip();
+
+		var message = '12 Mesa Street';
+		L.marker([37.968971, -122.030880])
+		.bindTooltip(message)
+		.addTo(map)
+		.openTooltip();
+
+
+	</script>
+
+</body>
+
+</html>
